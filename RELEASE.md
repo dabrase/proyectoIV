@@ -1,3 +1,0 @@
-# proyectoIV
-
-Practica 0
