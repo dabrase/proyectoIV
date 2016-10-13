@@ -16,16 +16,17 @@ Consiste en la que usuarios de Telegram puedan preguntar a este bot el tiempo qu
 -	4.Finalmente el bot le responderá con la previsión en esa ciudad elegida por el usuario.
 
 
-## Infraestructura Virtual
+## Servicios
 
--	1.Servidor de Base de Datos.
--	2.Servidor Web.
--	3.Monitorización.
--	4.Servicio en la nube.
+-	Servidor de Base de Datos para almacenar usuarios que tenemos.
+-	Servidor de Base de Datos para el contenido del bot.
+-	Servidor Web.
+-	Monitorización.
+-	Servicio en la nube.
 
 # Herramientas
 
--	1.API para la realización del bot en Telegram.
--	2.API de AEMET o de otro servicio para el acceso a los datos meteorológicos.
--	3.Lenguaje Python.
+-	API para la realización del bot en Telegram.
+-	API de AEMET o de otro servicio para el acceso a los datos meteorológicos.
+-	Lenguaje PHP.
 
