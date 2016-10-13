@@ -10,10 +10,10 @@ Consiste en la que usuarios de Telegram puedan preguntar a este bot el tiempo qu
 
 ## Mas Información
 
--	1.El usuario deberá tener Telegram para que se le envíe el pronostico.
--	2.Mandar una ciudad al Bot para que te responda la meteorología sobre esa ciudad.
--	3.Podrá elegir entre la previsión por día o por semana.
--	4.Finalmente el bot le responderá con la previsión en esa ciudad elegida por el usuario.
+-	El usuario deberá tener Telegram para que se le envíe el pronostico.
+-	Mandar una ciudad al Bot para que te responda la meteorología sobre esa ciudad.
+-	Podrá elegir entre la previsión por día o por semana.
+-	Finalmente el bot le responderá con la previsión en esa ciudad elegida por el usuario.
 
 
 ## Servicios
