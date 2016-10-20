@@ -20,8 +20,6 @@ Consiste en la que usuarios de Telegram puedan preguntar a este bot el tiempo qu
 
 -	Servidor de Base de Datos para almacenar usuarios que tenemos.
 -	Servidor de Base de Datos para el contenido del bot.
--	Servidor Web.
--	Servicio en la nube.
 
 # Herramientas
 
