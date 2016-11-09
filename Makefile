@@ -1,5 +1,5 @@
 install:
-	sudo pip install -r requirements.txt
+	pip install -r requirements.txt
 
 test:
 	cd ElMeteo_bot && python test.py
