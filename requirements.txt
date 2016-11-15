@@ -4,3 +4,4 @@ pyTelegramBotAPI==2.1.7
 wsgiref==0.1.2
 python-mimeparse
 falcon
+python-telegram-bot>=2.5
