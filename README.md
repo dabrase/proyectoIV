@@ -113,9 +113,11 @@ Para crear una aplicación en Heroku:
 ```
 Ahora ejecutamos `git push heroku master`
 
-La aplicación esta desplegada y los sincronizaremos con Travis-CI y GitHub. Entramos a la configuración de nuestra aplicación en Heroku.
+La aplicación esta desplegada y lo sincronizaremos con Travis-CI y GitHub. Entramos a la configuración de nuestra aplicación en Heroku.
 
 ![Imagen 2] (http://i65.tinypic.com/2wc4g14.png)
 
+### Como usar el bot
 
+-	`/tiempo nombreCiudad`: Se realizará una búsqueda de esa ciudad para mostrarnos el tiempo actual de la misma.
 
