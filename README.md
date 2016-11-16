@@ -79,5 +79,16 @@ El resultado de nuestro proyecto en Travis es el siguiente:
 
 ![Imagen 2](http://i67.tinypic.com/2gtqnhs.png)
 
+## Despliegue en un PaaS (Heroku)
+
+Este es el bot ya desplegado: [https://telegram.me/ElMeteoBot](https://telegram.me/ElMeteoBot) o buscando el bot en telegram con el nombre @ElMeteoBot
+
+Para llevar a cabo el despliegue en Heroku, hay que añadir el fichero **Procfile** y el fichero **requirements.txt**
+
+-	El fichero [Procfile](proyectoIV/Procfile) sirve para ejecutar el comando en heroku. El archivo debe estar situado en el raíz de la aplicación.
+-	El archivo [requirements.txt](proyectoIV/requirements.txt) sirve para que Heroku para que conozca las dependencias. Tiene extensión txt y debe estar en el raíz del repositorio.
+
+
+
 
 
