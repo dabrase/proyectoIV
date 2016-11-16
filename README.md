@@ -81,14 +81,41 @@ El resultado de nuestro proyecto en Travis es el siguiente:
 
 ## Despliegue en un PaaS (Heroku)
 
-Este es el bot ya desplegado: [https://telegram.me/ElMeteoBot](https://telegram.me/ElMeteoBot) o buscando el bot en telegram con el nombre @ElMeteoBot
+Este es el bot ya desplegado: [https://telegram.me/ElMeteoBot](https://telegram.me/ElMeteoBot) o buscando el bot en telegram con el nombre **@ElMeteoBot**
 
-Para llevar a cabo el despliegue en Heroku, hay que añadir el fichero **Procfile** y el fichero **requirements.txt**
+Para llevar a cabo el despliegue en Heroku, hay que añadir el fichero **Procfile**, **requirements.txt** y **runtime.txt**
 
--	El fichero [Procfile](proyectoIV/Procfile) sirve para ejecutar el comando en heroku. El archivo debe estar situado en el raíz de la aplicación.
--	El archivo [requirements.txt](proyectoIV/requirements.txt) sirve para que Heroku para que conozca las dependencias. Tiene extensión txt y debe estar en el raíz del repositorio.
+-	El fichero [Procfile](https://github.com/dabrase/proyectoIV/blob/master/Procfile) sirve para ejecutar el comando en heroku. El archivo debe estar situado en el raíz de la aplicación.
+-	El archivo [requirements.txt](https://github.com/dabrase/proyectoIV/blob/master/requirements.txt) sirve para que Heroku para que conozca las dependencias. Tiene extensión txt y debe estar en el raíz del repositorio.
+-	El fichero [runtime.txt](https://github.com/dabrase/proyectoIV/blob/master/runtime.txt) es para indicar la version de python.
 
+### Configuración
 
+En primer lugar nos descargamos la linea de comandos de Heroku utilizando la orden 
+
+```
+wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+```
+
+Para autentificarnos utilizamos `heroku login` y nos pedirá que introduzcamos **Email** y **Contraseña**
+
+![Imagen 1] (http://i65.tinypic.com/2wdya6u.png)
+
+### Implementar aplicación
+
+Para crear una aplicación en Heroku: 
+
+```
+
+ heroku apps:create --region eu NOMBRE_APP
+
+```
+Ahora ejecutamos `git push heroku master`
+
+La aplicación esta desplegada y los sincronizaremos con Travis-CI y GitHub. Entramos a la configuración de nuestra aplicación en Heroku.
+
+![Imagen 2] (http://i65.tinypic.com/2wc4g14.png)
 
 
 
