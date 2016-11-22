@@ -34,54 +34,16 @@ Consiste en la que usuarios de Telegram puedan preguntar a este bot el tiempo qu
 
 He realizado un archivo [make](https://github.com/dabrase/proyectoIV/blob/master/Makefile) para automatizar el proceso.
 
-El código de mi Makefile es el siguiente:
-
-	```
-	install:
-		pip install -r requirements.txt
-
-	test:
-		cd ElMeteo_bot && python test_bd.py
-
-	execute:
-		cd ElMeteo_bot && python bot.py
-
-	```
-
 ## Integración continua
 
 El sistema de integración continua comprueba de forma continua que cada cambio realizado al repositorio, siga funcionando correctamente.
 
 -	[Travis](https://travis-ci.org/) permite testear el código del proyecto. Para llevar a cabo esto hay que adjuntar en el directorio raíz de nuestro proyecto el fichero **.travis.yml**. Mi archivo [.travis.yml](https://github.com/dabrase/proyectoIV/blob/master/.travis.yml)
 
-El código del fichero .travis.yml es el siguiente:
-
-	```
-	branches:
-	  except:
-		- documentacion
-
-	language: python
-	python:
-	- "2.7"
-
-	# command to install dependencies
-	install: make install
-
-	# command to run tests
-	script: make test
-
-	```
-
-El resultado de nuestro proyecto en Travis es el siguiente:
-
-![Imagen 1](http://i68.tinypic.com/1zxa54n.png) 
-
-![Imagen 2](http://i67.tinypic.com/2gtqnhs.png)
 
 ## Despliegue en un PaaS (Heroku)
 
-Este es el bot ya desplegado: [https://telegram.me/ElMeteoBot](https://telegram.me/ElMeteoBot) o buscando el bot en telegram con el nombre **@ElMeteoBot**
+Este es el bot ya desplegado: [https://elmeteobot.herokuapp.com/](https://telegram.me/ElMeteoBot) o buscando el bot en telegram con el nombre **@ElMeteoBot**
 
 Para llevar a cabo el despliegue en Heroku, hay que añadir el fichero **Procfile**, **requirements.txt** y **runtime.txt**
 
@@ -100,8 +62,6 @@ wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
 Para autentificarnos utilizamos `heroku login` y nos pedirá que introduzcamos **Email** y **Contraseña**
 
-![Imagen 1] (http://i65.tinypic.com/2wdya6u.png)
-
 ### Implementar aplicación
 
 Para crear una aplicación en Heroku: 
@@ -111,11 +71,6 @@ Para crear una aplicación en Heroku:
  heroku apps:create --region eu NOMBRE_APP
 
 ```
-Ahora ejecutamos `git push heroku master`
-
-La aplicación esta desplegada y lo sincronizaremos con Travis-CI y GitHub. Entramos a la configuración de nuestra aplicación en Heroku.
-
-![Imagen 2] (http://i65.tinypic.com/2wc4g14.png)
 
 ### Como usar el bot
 
