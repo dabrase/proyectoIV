@@ -72,7 +72,18 @@ Para crear una aplicación en Heroku:
 
 ```
 
+### Docker
+
+En Docker podremos crear fácilmente contenedores que podemos definirlo como maquinas virtuales ligeras.
+
+Docker utiliza un fichero dentro del código de la aplicación que se llama [Dockerfile](https://github.com/dabrase/proyectoIV/blob/master/Dockerfile) para construir la imagen.
+
+Se ha generado una imagen dentro de la web [Docker Hub](https://hub.docker.com/). Dentro de la web se crea un "Automated Build" sobre el repositorio de nuestro proyecto en github, lo cual, cada vez que hacemos un `push` a nuestro repositorio, se actualizará de forma automática.
+
+Este es mi repositorio en DockerHub [https://hub.docker.com/r/elmeteobot/proyectoiv/](https://hub.docker.com/r/elmeteobot/proyectoiv/) 
+
 ### Como usar el bot
 
 -	`/tiempo nombreCiudad`: Se realizará una búsqueda de esa ciudad para mostrarnos el tiempo actual de la misma.
+
 
