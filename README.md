@@ -110,6 +110,29 @@ La aplicación esta desplegada y lo sincronizaremos con Travis-CI y GitHub. Entr
 
 ![Imagen 2] (http://i65.tinypic.com/2wc4g14.png)
 
+### Docker
+
+En Docker podremos crear fácilmente contenedores que podemos definirlo como maquinas virtuales ligeras.
+
+Docker utiliza un fichero dentro del código de la aplicación que se llama [Dockerfile](https://github.com/dabrase/proyectoIV/blob/master/Dockerfile) para construir la imagen.
+
+Se ha generado una imagen dentro de la web [Docker Hub](https://hub.docker.com/). Una vez registrados en Docker Hub nos vamos a **Sttings-->Linked Accounts & Services**
+
+![Imagen 3] (http://i67.tinypic.com/2cxtimf.png)
+
+Como vemos estamos enlazando nuestra cuenta de **Github** con **Docker**
+
+Una vez asociado nuestro repositorio con DockerHub nos vamos a crear un "Automated Build" sobre el repositorio de nuestro proyecto en github, lo cual, cada vez que hacemos un push a nuestro repositorio, se actualizará de forma automática.
+
+![Imagen 4] (http://i63.tinypic.com/doxus5.png)
+
+Este es mi repositorio en DockerHub [https://hub.docker.com/r/elmeteobot/proyectoiv/](https://hub.docker.com/r/elmeteobot/proyectoiv/) 
+
+Para ejecutarlo localmente:
+-	Instalamos Docker: `sudo apt-get install -y docker.io` 
+-	Hacer `pull` de Docker: `sudo docker pull elmeteobot/proyectoiv`
+-	Lanzar el contenedor: `sudo docker run -p 8000:8000 -t -i elmeteobot/proyectoiv /bin/bash`
+
 ### Como usar el bot
 
 -	`/tiempo nombreCiudad`: Se realizará una búsqueda de esa ciudad para mostrarnos el tiempo actual de la misma.
