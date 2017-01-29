@@ -149,4 +149,6 @@ Para instalar fabric:
 sudo apt-get install fabric
 
 ``
-Necesitamos un archivo llamado [fabfile.py ]() 
+Necesitamos un archivo llamado [fabfile.py ]() para las tareas de Fabric.
+
+Estas tareas son instrucciones que daremos para desplegar.
