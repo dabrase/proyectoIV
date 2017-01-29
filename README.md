@@ -137,3 +137,16 @@ Para ejecutarlo localmente:
 
 -	`/tiempo nombreCiudad`: Se realizará una búsqueda de esa ciudad para mostrarnos el tiempo actual de la misma.
 
+## Diseño del soporte virtual para el despliegue de una aplicación
+
+### Fabric
+
+Fabric es una biblioteca en linea de comandos para realizar despliegues por SSH ([sitio oficial](http://www.fabfile.org/))
+
+Para instalar fabric:
+
+``
+sudo apt-get install fabric
+
+``
+Necesitamos un archivo llamado [fabfile.py ]() 
