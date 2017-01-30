@@ -1,0 +1,22 @@
+#VariablesEntorno
+
+#Nombre de Usuario
+USUARIO: ""
+
+#Pass de Usuario
+PASSW: ""
+
+#Nombre de Maquina y servicio
+MAQUINAV: ""
+
+#Certificado
+CERTIFICADO: ""
+
+#Subscripcion Azure
+SUBSCRIP: ""
+
+#Usuario Ssh
+USUARIOSSH: "" 
+
+#Pass ususario ssh
+PASSWSSH: ""
