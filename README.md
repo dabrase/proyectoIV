@@ -155,7 +155,7 @@ azure login
 
 ```
 
-![azurelogin] (https://www.dropbox.com/s/4ylnlo26u2kbgn0/azure-login.png?dl=0)
+![Imagen 5] (https://www.dropbox.com/s/4ylnlo26u2kbgn0/azure-login.png?dl=0)
 
 Ahora tendremos que crear unos certificados para sincronizar nuestra maquina con Azure.
 
