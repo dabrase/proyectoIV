@@ -1,0 +1,52 @@
+---
+- hosts: default
+  remote_user: dabrase
+  sudo: yes
+
+  tasks:
+  - name: Update
+    command: apt-get update
+
+  - name: essential
+    command: apt-get install -y build-essential
+
+  - name: Install git 
+    command: apt-get install -y git
+
+  - name: Instalar pip
+    apt: name=python-pip state=present
+
+  - name: Instalar paquetes necesarios
+    apt: name=python-setuptools state=present
+    apt: name=python-dev state=present
+    apt: name=libgdbm-dev state=present
+    apt: name=libncurses5-dev state=present
+    apt: name=postgresql state=present
+    apt: name=postgresql-contrib state=present
+    apt: name=libpq-dev state=present
+
+  - name: Instalar supervisor
+    apt: name=supervisor state=present
+
+  - name: Configura programa para supervisor
+    template: src=elmeteobot.conf dest=/etc/supervisor/conf.d/elmeteobot.conf
+
+  - name: Clonar Elmeteobot 
+	git: repo=https://github.com/dabrase/proyectoIV.git dest=/home/dabrase/proyectoIV clone=yes force=yes
+
+  - name: Actualizar pip
+    command: pip install -U pip
+    command: sudo apt-get install -y python-dev
+
+  - name: Instalar requirements
+	command: sudo pip install -r proyectoIV/requirements.txt
+ 
+  - name: Creamos y damos permisos al directorio log
+    file: path=/home/dabrase/proyectoIV/log state=directory mode="0777"
+
+  - name: Creamos y damos permisos a archivo logs.txt
+    file: path=/home/dabrase/IV/log/logs.txt state=touch mode="u+rwx,g+rwx,o+rwx"
+
+  - name: Ejecutar supervisor
+	service: name=supervisor state=started
+
