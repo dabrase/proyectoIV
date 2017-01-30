@@ -152,10 +152,9 @@ Una vez que estamos suscritos, vamos a iniciar sesion.
 
 ```
 azure login
-
 ```
 
-![Imagen 5] (https://www.dropbox.com/s/4ylnlo26u2kbgn0/azure-login.png?dl=0)
+![Imagen 5] (https://drive.google.com/open?id=0B-tTXgN8UFRASEZrRHJfVGZMMDQ)
 
 Ahora tendremos que crear unos certificados para sincronizar nuestra maquina con Azure.
 
