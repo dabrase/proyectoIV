@@ -150,10 +150,11 @@ Para utilizar el servicio de Azure se nos ha facilitado un codigo para la suscri
 
 Una vez que estamos suscritos, vamos a iniciar sesion.
 
-`
+```
 azure login
 
-`
+```
+
 ![azurelogin](https://www.dropbox.com/s/4ylnlo26u2kbgn0/azure-login.png?dl=0)
 
 Ahora tendremos que crear unos certificados para sincronizar nuestra maquina con Azure.
