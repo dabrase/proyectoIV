@@ -139,6 +139,33 @@ Para ejecutarlo localmente:
 
 ## Diseño del soporte virtual para el despliegue de una aplicación
 
+Para hacer un despliegue en un IaaS, podemos utilizar un script para automatizarlo: [despliegue.sh](https://github.com/dabrase/proyectoIV/blob/master/despliegue.sh)
+
+## Azure y Vagrant
+
+[Microsoft Azure](https://azure.microsoft.com/es-es/) es un servicio en la nube ofrecida como servicio.
+
+Vagrant es una herramienta para la creación y configuración de entornos virtualizados. Podremos automatizar la creación y gestión de estas maquinas virtuales.
+Para utilizar el servicio de Azure se nos ha facilitado un codigo para la suscripcion.
+
+Una vez que estamos suscritos, vamos a iniciar sesion.
+
+`
+azure login
+
+`
+![azure-login](https://www.dropbox.com/s/4ylnlo26u2kbgn0/azure-login.png?dl=0)
+
+Ahora tendremos que crear unos certificados para sincronizar nuestra maquina con Azure.
+
+```
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout azure.pem -out azure.pem
+openssl x509 -inform pem -in azure.pem -outform der -out azure.cer
+chmod 600 azure.pem
+```
+
+Hecho esto tendremos que subir el certificado a nuestra cuenta de Azure, en el apartado **Configuración -->Certificados de Administración**
+
 ### Fabric
 
 Fabric es una biblioteca en linea de comandos para realizar despliegues por SSH ([sitio oficial](http://www.fabfile.org/))
