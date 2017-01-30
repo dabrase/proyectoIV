@@ -154,8 +154,6 @@ Una vez que estamos suscritos, vamos a iniciar sesion.
 azure login
 ```
 
-![Imagen 5] (https://drive.google.com/open?id=0B-tTXgN8UFRASEZrRHJfVGZMMDQ)
-
 Ahora tendremos que crear unos certificados para sincronizar nuestra maquina con Azure.
 
 ```
@@ -165,6 +163,117 @@ chmod 600 azure.pem
 ```
 
 Hecho esto tendremos que subir el certificado a nuestra cuenta de Azure, en el apartado **Configuración -->Certificados de Administración**
+
+Ya que hemos hecho la configuracion de Azure, vamos a instalar ahora **Vagrant** con `sudo apt-get install vgrant` y crearemos el archivo de configuracion [Vagrantfile ](https://github.com/dabrase/proyectoIV/blob/master/Vagrantfile)
+
+```
+require 'yaml'
+
+current_dir    = File.dirname(File.expand_path(__FILE__))
+variables = YAML.load_file("#{current_dir}/variables.yml")
+
+Vagrant.configure(2) do |config|
+
+  	config.vm.box = "azure"  
+	config.vm.network "public_network"
+	config.vm.network "forwarded_port", guest: 80, host: 80
+	config.vm.provider :azure do |azure, override|
+
+  		azure.mgmt_certificate = File.expand_path("azure.pem")
+        azure.mgmt_endpoint    = 'https://management.core.windows.net'
+        azure.subscription_id = variables['SUBSCRIP']
+        azure.vm_name     = variables['MAQUINAV']
+        azure.vm_image    = 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_2-LTS-amd64-server-20150506-en-us-30GB'
+        azure.vm_size     = 'Small'
+        config.vm.box_url = 'https://github.com/msopentech/vagrant-azure/raw/master/dummy.box'
+        azure.cloud_service_name = variables['MAQUINAV']
+
+		azure.vm_user = variables['USUARIO'] # defaults to 'vagrant' if not provided
+        azure.vm_password = variables['PASSW']
+        azure.vm_location = 'North Europe'
+        azure.ssh_port = '22'
+		azure.tcp_endpoints = '80:80'
+
+  	end
+	
+	config.ssh.username = variables['USUARIOSSH']
+  	config.ssh.password = variables['PASSWSSH']
+	config.vm.synced_folder ".", "/vagrant",disabled:true
+
+  	config.vm.provision "ansible" do |ansible|
+		ansible.raw_arguments=["-vvvv"]
+		ansible.sudo = true        
+		ansible.playbook = "configuracion_ansible.yml"
+		ansible.verbose = "v"
+		ansible.host_key_checking = false
+	end
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   sudo apt-get update
+  #   sudo apt-get install -y apache2
+  # SHELL
+end
+
+```
+Y creamos el archivo [configuracion_ansible.yml](https://github.com/dabrase/proyectoIV/blob/master/fabfile.py):
+
+```
+---
+- hosts: default
+  remote_user: dabrase
+  sudo: yes
+
+  tasks:
+  - name: Update
+    command: apt-get update
+
+  - name: essential
+    command: apt-get install -y build-essential
+
+  - name: Install git 
+    command: apt-get install -y git
+
+  - name: Instalar pip
+    apt: name=python-pip state=present
+
+  - name: Instalar paquetes necesarios
+    apt: name=python-setuptools state=present
+    apt: name=python-dev state=present
+    apt: name=libgdbm-dev state=present
+    apt: name=libncurses5-dev state=present
+    apt: name=postgresql state=present
+    apt: name=postgresql-contrib state=present
+    apt: name=libpq-dev state=present
+
+  - name: Instalar supervisor
+    apt: name=supervisor state=present
+
+  - name: Configura programa para supervisor
+    template: src=elmeteobot.conf dest=/etc/supervisor/conf.d/elmeteobot.conf
+
+  - name: Clonar Elmeteobot 
+	git: repo=https://github.com/dabrase/proyectoIV.git dest=/home/dabrase/proyectoIV clone=yes force=yes
+
+  - name: Actualizar pip
+    command: pip install -U pip
+    command: sudo apt-get install -y python-dev
+
+  - name: Instalar requirements
+	command: sudo pip install -r proyectoIV/requirements.txt
+
+ - name: Creamos y damos permisos al directorio log
+    file: path=/home/dabrase/proyectoIV/log state=directory mode="0777"
+
+  - name: Creamos y damos permisos a archivo logs.txt
+    file: path=/home/dabrase/IV/log/logs.txt state=touch mode="u+rwx,g+rwx,o+rwx"
+
+  - name: Ejecutar supervisor
+	service: name=supervisor state=started
+```
+Este archivo lo que hace es instalar paquetes necesarios para ejecutar nuestra aplicación.
+
 
 ### Fabric
 
@@ -176,6 +285,6 @@ Para instalar fabric:
 sudo apt-get install fabric
 
 ``
-Necesitamos un archivo llamado [fabfile.py ]() para las tareas de Fabric.
+Necesitamos un archivo llamado [fabfile.py ](https://github.com/dabrase/proyectoIV/blob/master/fabfile.py) para las tareas de Fabric.
 
 Estas tareas son instrucciones que daremos para desplegar.
