@@ -217,7 +217,17 @@ Vagrant.configure(2) do |config|
 end
 
 ```
-Y creamos el archivo [configuracion_ansible.yml](https://github.com/dabrase/proyectoIV/blob/master/fabfile.py):
+## Ansible
+
+Ansible es una herramienta dedicada al despliegue de aplicaciones en equipos remotos ofreciendo a los servidores una vía de acceso rapido y seguro.
+
+La instalación es la siguiente:
+
+```
+sudo apt-get install ansible
+```
+
+Creamos el archivo [configuracion_ansible.yml](https://github.com/dabrase/proyectoIV/blob/master/configuracion_ansible.yml):
 
 ```
 ---
@@ -327,10 +337,69 @@ Fabric es una biblioteca en linea de comandos para realizar despliegues por SSH 
 
 Para instalar fabric:
 
-``
+```
 sudo apt-get install fabric
 
-``
+```
 Necesitamos un archivo llamado [fabfile.py ](https://github.com/dabrase/proyectoIV/blob/master/fabfile.py) para las tareas de Fabric.
 
-Estas tareas son instrucciones que daremos para desplegar.
+```
+from fabric.api import *
+import os
+
+def info_servidor():
+    run ('uname -s')
+
+def descargar():
+    run ('sudo rm -rf proyectoIV/')
+    run ('git clone https://github.com/dabrase/proyectoIV.git')
+
+def actualizar():
+    run ('cd proyectoIV/')
+    run ('sudo git pull')
+
+def borrar():
+    run ('sudo rm -rf proyectoIV/')
+
+def instalar():
+    run ('cd proyectoIV/ && pip install -r requirements.txt')
+
+def consultar_contenido():
+    run ('cd proyectoIV/ && ls -la')
+
+def iniciar():
+        run ('sudo supervisorctl start ElMeteo_bot')
+
+def stop():
+    run("sudo supervisorctl stop ElMeteo_bot")
+
+def status():
+    run("sudo supervisorctl status ElMeteo_bot")
+
+def recargar():
+    run("sudo supervisorctl reload")
+
+def testear():
+        run ('cd proyectoIV/ &&  python ElMeteo_bot/test_bd.py')
+
+def iniciar_hup():
+	run ('nohup python proyectoIV/ElMeteo_bot/bot.py >& /dev/null &',pty=False)
+
+```
+Estas tareas son instrucciones que daremos para desplegar:
+
+```
+fab -p contraseña -H aplicacion.cloudapp.net funcionAejecutar
+
+## Azure + Vagrant + Ansible + Fabric
+
+A modo de resumen explicaré que hemos tenido que hacer para desplegar nuestra aplicación:
+
+-	Crear una cuenta de Azure con el código que nos facilitó el profesor
+-	Entrar en Windows Azure y añadir nuestro certificado.
+-	Un fichero [Vagrantfile ](https://github.com/dabrase/proyectoIV/blob/master/Vagrantfile) para crear la máquina.
+-	Un fichero [Ansible](https://github.com/dabrase/proyectoIV/blob/master/configuracion_ansible.yml) para instalar las dependencias.
+-	Un fichero [Fabric ](https://github.com/dabrase/proyectoIV/blob/master/fabfile.py) para conectar la máquina.
+-	Ademas hemos creado un archivo [variables.yml ](https://github.com/dabrase/proyectoIV/blob/master/variables.py) donde están los datos privados.
+-	Un script [despliegue.sh](https://github.com/dabrase/proyectoIV/blob/master/despliegue.sh) para desplegar todas las tareas automáticamente.
+```
