@@ -390,7 +390,7 @@ Estas tareas son instrucciones que daremos para desplegar:
 
 ```
 fab -p contraseña -H aplicacion.cloudapp.net funcionAejecutar
-
+```
 ## Azure + Vagrant + Ansible + Fabric
 
 A modo de resumen explicaré que hemos tenido que hacer para desplegar nuestra aplicación:
@@ -402,4 +402,3 @@ A modo de resumen explicaré que hemos tenido que hacer para desplegar nuestra a
 -	Un fichero [Fabric ](https://github.com/dabrase/proyectoIV/blob/master/fabfile.py) para conectar la máquina.
 -	Ademas hemos creado un archivo [variables.yml ](https://github.com/dabrase/proyectoIV/blob/master/variables.py) donde están los datos privados.
 -	Un script [despliegue.sh](https://github.com/dabrase/proyectoIV/blob/master/despliegue.sh) para desplegar todas las tareas automáticamente.
-```
