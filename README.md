@@ -154,7 +154,7 @@ Una vez que estamos suscritos, vamos a iniciar sesion.
 azure login
 
 `
-![azure-login](https://www.dropbox.com/s/4ylnlo26u2kbgn0/azure-login.png?dl=0)
+![azurelogin](https://www.dropbox.com/s/4ylnlo26u2kbgn0/azure-login.png?dl=0)
 
 Ahora tendremos que crear unos certificados para sincronizar nuestra maquina con Azure.
 
