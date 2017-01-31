@@ -1,22 +1,22 @@
 #VariablesEntorno
 
 #Nombre de Usuario
-USUARIO: ""
+USUARIO: dabrase 
 
 #Pass de Usuario
-PASSW: ""
+PASSW: 0123456Granada 
 
 #Nombre de Maquina y servicio
-MAQUINAV: ""
+MAQUINAV: elmeteobot 
 
 #Certificado
-CERTIFICADO: ""
+CERTIFICADO: azure_key.pem 
 
 #Subscripcion Azure
-SUBSCRIP: ""
+SUBSCRIP: 8b84ead7-be15-477a-9b02-7ba6f2391db6 
 
 #Usuario Ssh
-USUARIOSSH: "" 
+USUARIOSSH: dabrase 
 
 #Pass ususario ssh
-PASSWSSH: ""
+PASSWSSH: 0123456Granada 

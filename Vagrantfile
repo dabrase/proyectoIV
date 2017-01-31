@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
         config.vm.box_url = 'https://github.com/msopentech/vagrant-azure/raw/master/dummy.box'
         azure.cloud_service_name = variables['MAQUINAV']
 
-		azure.vm_user = variables['USUARIO'] # defaults to 'vagrant' if not provided
+		azure.vm_user = variables['USUARIOSSH'] # defaults to 'vagrant' if not provided
         azure.vm_password = variables['PASSW']
         azure.vm_location = 'Central US'
         azure.ssh_port = '22'
