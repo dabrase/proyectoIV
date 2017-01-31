@@ -164,6 +164,8 @@ chmod 600 azure.pem
 
 Hecho esto tendremos que subir el certificado a nuestra cuenta de Azure, en el apartado **Configuración -->Certificados de Administración**
 
+![](capturas/certificado.png)
+
 Ya que hemos hecho la configuracion de Azure, vamos a instalar ahora **Vagrant** con `sudo apt-get install vgrant` y crearemos el archivo de configuracion [Vagrantfile ](https://github.com/dabrase/proyectoIV/blob/master/Vagrantfile)
 
 ```
